@@ -1,0 +1,63 @@
+@use "variables" as vars;
+@use "mixins" as mxns;
+
+.navmenu {
+  position: absolute;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  height: 100vh;
+  width: 13.5rem;
+  padding: 1.4rem 1.1rem;
+  transition: left 500ms ease-in;
+
+  &--open {
+    left: 0;
+  }
+
+  &--closed {
+    left: -300px;
+  }
+
+  &__closebtn {
+    @include mxns.header-btn;
+  }
+
+  &__links {
+    list-style: none;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.59rem;
+    margin-top: 2.05rem;
+  }
+  &__link {
+    text-decoration: none;
+    font-weight: 700;
+    color: vars.$very-dark-blue;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: vars.$tablet) {
+  .navmenu {
+    position: static;
+    height: auto;
+    width: fit-content;
+    padding: 0;
+
+    &__closebtn {
+      display: none;
+    }
+
+    &__links {
+      flex-direction: row;
+      gap: 2.05rem;
+      margin: 0;
+    }
+    &__link {
+      font-weight: 400;
+      font-size: 0.95rem;
+    }
+  }
+}

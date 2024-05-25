@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Kumbh Sans";
+  src: url(./assets/fonts/KumbhSans-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Kumbh Sans";
+  src: url(./assets/fonts/KumbhSans-Bold.ttf);
+  font-weight: 700;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  margin: 0;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  #page-overlay {
+    display: none;
+  }
+}

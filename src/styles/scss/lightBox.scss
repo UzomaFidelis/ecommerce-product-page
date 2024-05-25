@@ -1,0 +1,182 @@
+@use "variables" as vars;
+
+.lightbox {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: vars.$overlay-black;
+  z-index: 10;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+    &-btn {
+      background-color: transparent;
+      outline: none;
+
+      &-img {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+}
+.slider__img {
+  width: 100%;
+  height: 100%;
+  transform: scaleY(1.2);
+}
+.lightbox-glide {
+  &__track-wrapper {
+    position: relative;
+  }
+
+  &__slides {
+    height: 18.8rem;
+  }
+
+  &__bullets {
+    box-sizing: border-box;
+  }
+}
+
+.lightbox-glider-control {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: fit-content;
+  padding: 0;
+  transform: scaleX(1.08);
+
+  &__btn {
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 100%;
+    //height: 3.3rem;
+    //width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+}
+
+@media (min-width: vars.$tablet) {
+  .lightbox {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    &__close {
+      width: 43vw;
+    }
+  }
+  .lightbox-glide {
+    &__track {
+      width: 43vw;
+      border-radius: 20px;
+    }
+
+    &__slides {
+      height: 43vw;
+    }
+
+    &__bullets {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.8rem;
+    }
+    &__bullet {
+      $bullet: &;
+      width: 3.8rem;
+      height: 3.8rem;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      border: none;
+      outline: none;
+    }
+  }
+
+  .glide__bullet {
+    $bullet: &;
+
+    &:hover &-overlay {
+      opacity: 0.5;
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+
+    &--active {
+      border: 2px solid vars.$orange;
+
+      & > #{$bullet}-overlay {
+        opacity: 1;
+      }
+    }
+
+    &-overlay {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.65);
+      transition: opacity 100ms linear;
+      pointer-events: none;
+    }
+  }
+
+  .slider__img {
+    transform: scaleY(1);
+  }
+}
+@media (min-width: vars.$desktop) {
+  .lightbox {
+    &__close {
+      width: 38vw;
+    }
+  }
+  .lightbox-glide {
+    &__track {
+      width: 38vw;
+    }
+    &__slides {
+      height: 38vw;
+    }
+    &__bullet {
+      height: 4.6rem;
+      width: 4.5rem;
+    }
+  }
+  .lightbox-glider-control {
+    &__btn {
+      height: 3.3rem;
+      width: 3rem;
+    }
+  }
+}
+@media (min-width: vars.$desktop-lg) {
+  .lightbox-glide {
+    &__bullet {
+      height: 5.6rem;
+      width: 5.5rem;
+    }
+  }
+}

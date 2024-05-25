@@ -1,0 +1,136 @@
+@use "variables" as vars;
+
+.slider__img {
+  width: 100%;
+  height: 100%;
+  transform: scaleY(1.2);
+}
+.product-glide {
+  &__track-wrapper {
+    position: relative;
+  }
+  &__slides {
+    height: 18.8rem;
+  }
+
+  &__bullets {
+    display: none;
+    box-sizing: border-box;
+  }
+}
+
+.product-glider-control {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: fit-content;
+  padding: 0 1rem;
+
+  &__btn {
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 100%;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+}
+
+@media (min-width: vars.$tablet) {
+  .product-glide {
+    //flex-basis: 27.8rem;
+    flex-basis: 20rem;
+
+    &__track {
+      width: 20rem;
+      border-radius: 20px;
+    }
+
+    &__slides {
+      //height: 28rem;
+      height: 22rem;
+    }
+
+    &__bullets {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.8rem;
+    }
+    &__bullet {
+      $bullet: &;
+      //width: 5.5rem;
+      //height: 5.6rem;
+      width: 3.8rem;
+      height: 3.8rem;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      border: none;
+      outline: none;
+    }
+  }
+
+  .glide__bullet {
+    $bullet: &;
+
+    &:hover &-overlay {
+      opacity: 0.5;
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+
+    &--active {
+      border: 2px solid vars.$orange;
+
+      & > #{$bullet}-overlay {
+        opacity: 1;
+      }
+    }
+
+    &-overlay {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.65);
+      transition: opacity 100ms linear;
+      pointer-events: none;
+    }
+  }
+
+  .slider__img {
+    transform: scaleY(1);
+  }
+  .product-glider-control {
+    display: none;
+  }
+}
+
+@media (min-width: vars.$desktop) {
+  .product-glide {
+    flex-basis: 27.8rem;
+
+    &__track {
+      width: 27.8rem;
+    }
+    &__slides {
+      height: 28rem;
+    }
+    &__bullet {
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+  }
+}

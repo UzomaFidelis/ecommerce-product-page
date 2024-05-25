@@ -1,0 +1,124 @@
+@use "variables" as vars;
+@use "mixins" as mxns;
+
+.header {
+  position: fixed;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  z-index: 3;
+
+  &__content {
+    padding: 1.1rem 1.09rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menubtn {
+    @include mxns.header-btn;
+    margin-right: 0.65rem;
+  }
+  &__cartbtn {
+    @include mxns.header-btn;
+    position: relative;
+  }
+
+  &__avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid vars.$orange;
+    }
+  }
+}
+
+.cart-container {
+  padding-right: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-items-num {
+  position: absolute;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.13rem 0.5rem 0.1rem;
+  border-radius: 100%;
+  background-color: vars.$orange;
+  top: -3px;
+  right: 0;
+}
+#page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  opacity: 0;
+  transition: opacity 150ms ease-in;
+  pointer-events: none;
+}
+
+@media (min-width: vars.$tablet) {
+  .header {
+    position: static;
+
+    &__menubtn {
+      display: none;
+    }
+
+    &__content {
+      //padding: 1.8rem 10.3rem;
+      padding: 1.5rem 2rem;
+    }
+    &__logo-nav {
+      display: flex;
+      align-items: center;
+      //gap: 3rem;
+      gap: 1rem;
+    }
+    &__avatar {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  .cart-container {
+    padding-right: 0;
+    gap: 1.2rem;
+    position: relative;
+  }
+}
+
+@media (min-width: vars.$desktop) {
+  .header {
+    &__content {
+      padding: 1.8rem 10.3rem;
+    }
+    &__logo-nav {
+      gap: 3rem;
+    }
+    &__avatar {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  .cart-container {
+    gap: 1.75rem;
+    padding-left: 2rem;
+  }
+}
+@media (min-width: vars.$desktop-lg) {
+  .cart-container {
+    padding-left: 0;
+    gap: 2.55rem;
+  }
+}

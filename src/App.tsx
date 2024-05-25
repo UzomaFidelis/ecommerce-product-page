@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import ProductPage from "./components/ProductPage";
 import productData from "./data.json";
 import { AppAction, AppState, CartItem, Product } from "./types";
-import LightBox from "./components/LightBox";
 
 function reducer(state: AppState, action: AppAction): AppState {
   switch (action.type) {

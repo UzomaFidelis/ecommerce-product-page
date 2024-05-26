@@ -44,7 +44,6 @@ const Header = ({
       document.body.style.overflow = "hidden";
       const pageOverlay = document.getElementById("page-overlay");
       if (pageOverlay) {
-        // pageOverlay.style.display = "block";
         pageOverlay.style.opacity = "1";
       }
     }
@@ -56,7 +55,6 @@ const Header = ({
     const pageOverlay = document.getElementById("page-overlay");
     if (pageOverlay) {
       pageOverlay.style.opacity = "0";
-      // pageOverlay.style.display = "none";
     }
   };
 
@@ -72,11 +70,18 @@ const Header = ({
         }
       }
     };
+    const closeSideMenuOnResize = () => {
+      if (state.menuOpen && window.matchMedia("(min-width: 740px)").matches) {
+        closeNav();
+      }
+    };
 
     document.addEventListener("mousedown", handleOutsideMenuClick);
+    window.addEventListener("resize", closeSideMenuOnResize);
 
     return () => {
       document.removeEventListener("mousedown", handleOutsideMenuClick);
+      window.removeEventListener("resize", closeSideMenuOnResize);
     };
   }, [state.menuOpen]);
 

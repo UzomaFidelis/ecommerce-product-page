@@ -14,7 +14,7 @@ const Cart = ({
       <p className="cart__label">Cart</p>
       <hr className="cart__divider" />
       <div className="cart__content">
-        {items ? (
+        {items.length !== 0 ? (
           <ul className="cart__items">
             {items.map((item, idx) => (
               <li key={idx} className="cart__item">

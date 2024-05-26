@@ -33,14 +33,12 @@ const ProductPage = ({
 
   const hideLightBox = useCallback(() => {
     dispatch({ type: "hide-lightbox" });
-    console.log("hiding lightbox");
   }, []);
 
   useEffect(() => {
     const showLightBox = () => {
       if (window.matchMedia("(min-width: 768px)").matches) {
         dispatch({ type: "show-lightbox" });
-        console.log("lightbox showing");
       }
     };
 
@@ -50,7 +48,6 @@ const ProductPage = ({
         window.matchMedia("(max-width: 768px)").matches
       ) {
         dispatch({ type: "hide-lightbox" });
-        console.log("lightbox hiding on resize");
       }
     };
 

@@ -12,3 +12,13 @@
   border: none;
   background-color: transparent;
 }
+
+@mixin gray-bg {
+  background-color: #eee;
+}
+
+@mixin focus-border($color) {
+  &:focus {
+    border: 2px solid $color;
+  }
+}

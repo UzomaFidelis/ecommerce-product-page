@@ -87,6 +87,9 @@ const Header = ({
 
   return (
     <header className="header">
+      <a href="#main" className="skip-to-content-link">
+        Skip to main content
+      </a>
       <div className="header__content">
         <div className="header__logo-nav">
           <button className="header__menubtn" onClick={openNav}>
@@ -121,11 +124,14 @@ const Header = ({
           </div>
 
           <div>
-            <img
-              src={userAvatar}
-              alt="user avatar"
-              className="header__avatar"
-            />
+            <a href="" aria-label="user profile" className="user">
+              <img
+                src={userAvatar}
+                alt="user avatar"
+                className="header__avatar"
+                aria-hidden
+              />
+            </a>
           </div>
         </div>
       </div>

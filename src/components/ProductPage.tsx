@@ -72,7 +72,7 @@ const ProductPage = ({
   });
 
   return (
-    <main className="main-content">
+    <main id="main" className="main-content">
       <div className="main-content__wrapper">
         {" "}
         <ProductImageSlider
@@ -106,8 +106,8 @@ const ProductPage = ({
                 className="product__units-btn"
                 onClick={() => dispatch({ type: "decrement" })}
                 disabled={state.count === 0 ? true : false}
+                aria-label="decrease number of units"
               >
-                <span className="sr-only">decrease number of units</span>
                 <svg
                   width="12"
                   height="4"
@@ -132,8 +132,8 @@ const ProductPage = ({
               <button
                 className="product__units-btn"
                 onClick={() => dispatch({ type: "increment" })}
+                aria-label="increase number of units"
               >
-                <span className="sr-only">increase number of units</span>
                 <svg
                   width="12"
                   height="12"

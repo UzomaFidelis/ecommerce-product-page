@@ -1,6 +1,20 @@
 @use "variables" as vars;
 @use "mixins" as mxns;
 
+.skip-to-content-link {
+  left: 50%;
+  position: absolute;
+  transform: translateY(-100%);
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 0.5rem;
+  transition: transform 0.3s;
+
+  &:focus {
+    transform: translateY(10%);
+    z-index: 5;
+  }
+}
 .header {
   position: fixed;
   box-sizing: border-box;
@@ -22,6 +36,7 @@
   }
   &__cartbtn {
     @include mxns.header-btn;
+    @include mxns.focus-border(#000);
     position: relative;
   }
 
@@ -54,6 +69,12 @@
   top: -3px;
   right: 0;
 }
+
+.user {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
 #page-overlay {
   position: fixed;
   top: 0;

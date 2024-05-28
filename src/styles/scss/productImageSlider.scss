@@ -1,4 +1,5 @@
 @use "variables" as vars;
+@use "mixins" as mxns;
 
 .slider__img {
   width: 100%;
@@ -6,11 +7,20 @@
   transform: scaleY(1.2);
 }
 .product-glide {
+  &__track {
+    @include mxns.gray-bg;
+  }
   &__track-wrapper {
     position: relative;
   }
   &__slides {
     height: 18.8rem;
+  }
+  &__bullet {
+    @include mxns.gray-bg;
+    &:focus {
+      @include mxns.focus-border(vars.$very-dark-blue);
+    }
   }
 
   &__bullets {

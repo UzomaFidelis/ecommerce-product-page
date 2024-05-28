@@ -95,6 +95,18 @@
       border-radius: 5px;
     }
   }
+  &__checkout-btn {
+    height: 3.5rem;
+    width: 100%;
+    background-color: vars.$orange;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    color: white;
+    font-weight: 700;
+  }
 }
 
 @media (min-width: vars.$tablet) {

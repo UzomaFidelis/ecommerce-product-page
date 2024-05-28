@@ -18,6 +18,8 @@
   }
   &__bullet {
     @include mxns.gray-bg;
+    cursor: pointer;
+
     &:focus {
       @include mxns.focus-border(vars.$very-dark-blue);
     }

@@ -1,6 +1,6 @@
 import ProductImageSlider from "./ProductImageSlider";
 import "../styles/scss/productPage.scss";
-import { useEffect, useReducer, useCallback } from "react";
+import { useEffect, useReducer, useCallback, useRef } from "react";
 import { ProductState, ProductAction, Product } from "../types";
 import LightBox from "./LightBox";
 
@@ -31,9 +31,22 @@ const ProductPage = ({
     isLightBoxOpen: false,
   });
 
+  const addToCartPopupRef = useRef<HTMLSpanElement>(null);
   const hideLightBox = useCallback(() => {
     dispatch({ type: "hide-lightbox" });
   }, []);
+
+  const showAddToCartConfirm = async () => {
+    if (addToCartPopupRef.current) {
+      addToCartPopupRef.current.style.display = "block";
+
+      setTimeout(() => {
+        if (addToCartPopupRef.current) {
+          addToCartPopupRef.current.style.display = "none";
+        }
+      }, 4000);
+    }
+  };
 
   useEffect(() => {
     const showLightBox = () => {
@@ -157,7 +170,10 @@ const ProductPage = ({
             </div>
             <button
               className="add-cart-btn"
-              onClick={() => addToCartFn(product, state.count)}
+              onClick={() => {
+                addToCartFn(product, state.count);
+                showAddToCartConfirm();
+              }}
               disabled={state.count ? false : true}
             >
               <svg
@@ -173,6 +189,13 @@ const ProductPage = ({
                 />
               </svg>
               Add to cart
+              <span
+                id="added-to-cart"
+                className="add-cart-btn__added"
+                ref={addToCartPopupRef}
+              >
+                Added to cart
+              </span>
             </button>
           </div>
         </div>

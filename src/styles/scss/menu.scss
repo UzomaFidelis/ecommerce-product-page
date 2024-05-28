@@ -58,6 +58,19 @@
     &__link {
       font-weight: 400;
       font-size: 0.95rem;
+      color: vars.$grayish-blue;
+      position: relative;
+
+      &:hover:after {
+        content: "";
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        height: 0.2rem;
+        background-color: vars.$orange;
+        bottom: -1rem;
+        width: 100%;
+      }
     }
   }
 }

@@ -86,6 +86,7 @@ const ProductPage = ({
 
   return (
     <main id="main" className="main-content">
+      <h1 className="sr-only">Product page</h1>
       <div className="main-content__wrapper">
         {" "}
         <ProductImageSlider
